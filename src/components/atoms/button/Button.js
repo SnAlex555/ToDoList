@@ -2,12 +2,14 @@ import { Component } from "../../core/Component";
 
 export class Button extends Component {
 
-    registerEvents() {
-        this.addEventListener ("click",() => {
-            this.dispatchEvent(this.props.eventType)
-    })
-    };
+    componentDidMount() {
+        this.addEventListener("click", () =>{
+            this.dispatch(this.props.eventype);
+    });
+}
 
+
+    
     render() {
         const { content, classname } = this.props;
         return `
