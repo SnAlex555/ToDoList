@@ -1,4 +1,4 @@
-import { Component } from "../../core";
+import { Component } from "../../core/Component";
 
 export class Button extends Component {
 
@@ -9,12 +9,12 @@ export class Button extends Component {
     };
 
     render() {
-        const [ content, classname ] = this.props;
+        const { content, classname } = this.props;
         return `
-        <my-button type="button" class='btn btn-primary btn-${className}"> ${content}</my-button>
+        <my-button type="button" class='btn btn-primary btn-${classname}"> ${content}</my-button>
         `
     };
 
 }
 
-customElements.define('my-app', Button)
+customElements.define('my-button', Button)
