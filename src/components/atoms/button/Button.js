@@ -1,22 +1,23 @@
-import { Component } from "../../core/Component";
+import { Component } from "../../../core";
 
 export class Button extends Component {
-
-    componentDidMount() {
-        this.addEventListener("click", () =>{
-            this.dispatch(this.props.eventype);
+  
+  componentDidMount() {
+    this.addEventListener("click", () => {
+      this.dispatch(this.props.eventtype);
     });
+  }
+
+  static get observedAttributes() { 
+    return ['content', 'classname', 'eventtype', 'type']; 
+  }
+
+  render() {
+    const { content, classname } = this.props;
+    return `
+            <button type="${this.props.type}" class="btn ${classname}">${content}</button>
+        `;
+  }
 }
 
-
-    
-    render() {
-        const { content, classname } = this.props;
-        return `
-        <my-button type="button" class='btn btn-primary btn-${classname}"> ${content}</my-button>
-        `
-    };
-
-}
-
-customElements.define('my-button', Button)
+customElements.define("my-button", Button);
